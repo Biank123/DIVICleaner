@@ -153,12 +153,9 @@ function previewHTML() {
     previewWindow.document.write(cleanHTML);
     previewWindow.document.close();
 }
+document.getElementById("pasteButton").addEventListener("click", pasteHTML);
+document.getElementById("copyButton").addEventListener("click", copyCleanHTML);
+document.getElementById("cleanButton").addEventListener("click", cleanHTML);
+document.getElementById("previewButton").addEventListener("click", previewHTML);
 })
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Asigna las funciones a los botones
-    document.getElementById("pasteButton").addEventListener("click", pasteHTML);
-    document.getElementById("copyButton").addEventListener("click", copyCleanHTML);
-    document.getElementById("cleanButton").addEventListener("click", cleanHTML);
-    document.getElementById("previewButton").addEventListener("click", previewHTML);
-});
