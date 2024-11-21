@@ -24,7 +24,8 @@ function cleanHTML() {
         diviBlocks: [],
         imagesExtracted: [],
         imagesWithLinksExtracted: [],
-        reactIdsRemoved: []
+        reactIdsRemoved: [],
+        videosExtracted: [] // Agregado para los videos extraídos
     };
 
     // Función para limpiar párrafos vacíos
@@ -53,7 +54,6 @@ function cleanHTML() {
 
     // Función para limpiar bloques de código de divi 
     function cleanDiviBlocks(content) {
-        // Patrones con regex para cada uno
         const patterns = [
             /\[et_pb_text[^\]]*\](?:\s|&nbsp;)*\[\/et_pb_text\]/gi,
             /\[et_pb_section[^\]]*\](?:\s|&nbsp;)*\[\/et_pb_section\]/gi,
@@ -78,14 +78,23 @@ function cleanHTML() {
         return content.replace(pattern, '');
     }
 
+    // Función para extraer videos
+    function extractVideos(content) {
+        const videoPattern = /\[et_pb_video[^\]]*src="([^"]+)"[^\]]*\]/gi;
+        const matches = [...content.matchAll(videoPattern)];
+        matches.forEach(match => eliminados.videosExtracted.push(match[1]));
+        return content.replace(videoPattern, (match, src) => `<video controls><source src="${src}" type="video/mp4"></video>`);
+    }
+
     //Toma el valor que tiene el HTML sopa
     let cleanedHTML = dirtyHTML; 
 
-    cleanedHTML = removeDataReactId(cleanedHTML); //Procesa data-reactid
+    cleanedHTML = removeDataReactId(cleanedHTML); // Procesa data-reactid
     cleanedHTML = extractImagesWithLinks(cleanedHTML); // Procesa imágenes con links
     cleanedHTML = extractImages(cleanedHTML); // Procesa imágenes básicas
-    cleanedHTML = cleanDiviBlocks(cleanedHTML); //Procesa bloques divi
-    cleanedHTML = cleanEmptyParagraphs(cleanedHTML); //Procesa párrafos vacíos
+    cleanedHTML = extractVideos(cleanedHTML); // Procesa videos
+    cleanedHTML = cleanDiviBlocks(cleanedHTML); // Procesa bloques divi
+    cleanedHTML = cleanEmptyParagraphs(cleanedHTML); // Procesa párrafos vacíos
 
     // para limpiar el contenido de posibles saltos de línea innecesarios, espacios extra y otros caracteres no deseados
     cleanedHTML = cleanedHTML.replace(/\n\s*\n/g, '\n').replace(/\s+/g, ' ').trim();
@@ -109,7 +118,7 @@ function cleanHTML() {
                 }
             });
 
-            // se cierra la lista de elementos 
+            // Se cierra la lista de elementos 
             reportContent += "</ul></li>";
         }
 
@@ -139,7 +148,9 @@ function cleanHTML() {
 // Función para previsualizar el html limpio
 function previewHTML() {
     const cleanHTML = document.getElementById("cleanHTML").value;
-    const previewWindow = window.open('', '_blank'); // para que se abra en otra pestaña
+    const previewWindow = window.open('', '_blank'); // Para que se abra en otra pestaña
     previewWindow.document.write(cleanHTML);
     previewWindow.document.close();
+}
+
 }
