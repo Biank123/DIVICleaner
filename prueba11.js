@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 // Función para pegar del portapapeles
 function pasteHTML() {
     navigator.clipboard.readText().then(text => {
@@ -18,14 +19,14 @@ function cleanHTML() {
     const dirtyHTML = document.getElementById("dirtyHTML").value;
     const cleanHTMLTextarea = document.getElementById("cleanHTML");
 
-    // objeto de los elementos eliminados al limpiar el html (vacíos) para el reporte posterior
+    // objeto de los elementos eliminados al limpiar el html (vacíos)
     const eliminados = {
-        emptyParagraphs: [], 
+        emptyParagraphs: [],
         diviBlocks: [],
         imagesExtracted: [],
         imagesWithLinksExtracted: [],
         reactIdsRemoved: [],
-        videosExtracted: []
+        videosExtracted: [] 
     };
 
     // Función para limpiar párrafos vacíos <p>&nbsp;</p>
@@ -99,13 +100,13 @@ function cleanHTML() {
     // para limpiar el contenido de posibles saltos de línea innecesarios, espacios extra y otros caracteres no deseados
     cleanedHTML = cleanedHTML.replace(/\n\s*\n/g, '\n').replace(/\s+/g, ' ').trim();
 
-    // Para el reporte de lo realizado al limpiar el código sopa, que esté organizado
+    // Para el reporte de lo realizado al limpiar el código sopa
     let reportContent = "<ul>";
 
     // Para cada elemento en el objeto de eliminados...
     for (const key in eliminados) {
-        if (eliminados[key].length) { //Si la longitud del elemento correspondiente a key en el objeto eliminados es mayor que 0
-            // Añade la clase category 
+        if (eliminados[key].length) {
+            // Añade la categoría 
             reportContent += `<li><span class="category">${key.replace(/([A-Z])/g, ' $1').toUpperCase()}:</span><ul>`;
 
             eliminados[key].forEach(item => {
@@ -152,5 +153,4 @@ function previewHTML() {
     previewWindow.document.write(cleanHTML);
     previewWindow.document.close();
 }
-
-}
+})
