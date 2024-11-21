@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza de HTML</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="prueba11.css">
+</head>
+<body>
+    <h1>Herramienta de Limpieza de HTML de shortcode de DIVI</h1>
+    <p>Pega tu HTML en el cuadro de texto a continuación</p>
+
+    <div class="container">
+        <!-- Input de la sopa -->
+        <div class="input-section">
+            <h2>Sopa de código</h2>
+            <textarea id="dirtyHTML" placeholder="Pega aquí tu HTML"></textarea>
+            <div class="button-container">
+                <button class="copyPaste" onclick="pasteHTML()">Pegar sopa de html</button>
+                <button id="clean" onclick="cleanHTML()">Limpiar HTML</button>
+                
+            </div>
+        </div>
+
+        <!-- Output de código limpio -->
+        <div class="output-section">
+            <h2>Código Limpio</h2>
+            <textarea id="cleanHTML" placeholder="Aquí aparecerá tu código limpio" readonly></textarea>
+            <div class="button-container">
+                <button class="copyPaste" onclick="copyCleanHTML()">Copiar código limpio</button>
+                <button id="preview" onclick="previewHTML()">Vista Previa</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h2>Reporte de elementos eliminados o modificados:</h2>
+        <div id="report">
+            <ul id="report-list"></ul>
+        </div>
+    </div>
+    
+    <!-- Script -->
+    <script src="prueba11.js"></script>
+</body>
+</html>

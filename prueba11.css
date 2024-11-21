@@ -1,0 +1,175 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e6e6e6;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0 100px;
+    gap: 20px;
+}
+
+.input-section, .output-section {
+    width: 45%;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+    background-color: #f9f9f9;
+    resize: none;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.copyPaste {
+    padding: 12px 20px;
+    border: none;
+    background-color: #0b335a;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.copyPaste:hover {
+    background-color: #04468d;
+}
+
+.copyPaste:focus {
+    outline: none;
+}
+
+#preview{
+    padding: 12px 20px;
+    border: none;
+    background-color: #9900ff;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+#clean{
+    padding: 12px 20px;
+    border: none;
+    background-color: #15812d;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+/* Botón de Limpiar HTML  */
+button.clean {
+    background-color: #28a745;
+    margin: 0 auto; 
+    display: block; 
+}
+
+button.clean:hover {
+    background-color: #218838;
+}
+
+
+/* Estilos para el reporte */
+.report-section {
+    background-color: #333;
+    color: white;
+    margin-top: 60px;
+    width: 100%;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.report-section h2{
+    text-align: center;
+}
+
+/* Contenedor del reporte */
+#report {
+    padding: 10px;
+}
+
+/* Estilo de la lista */
+#report ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+/* Estilo de cada item en la lista */
+#report li {
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Estilo para los elementos de la lista (sin fondo o bordes) */
+.item {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* Estilo para las URLs dentro de los elementos */
+.url {
+    
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .report-section {
+        padding: 10px;
+    }
+    #report {
+        padding: 10px;
+    }
+    #report ul {
+        padding-left: 20px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .input-section, .output-section {
+        width: 90%;
+    }
+}
